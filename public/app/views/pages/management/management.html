@@ -1,0 +1,221 @@
+<!-- Heading -->
+<div class="row text-center">
+    <div class="content">
+    <br>
+        <h2 class="section-subheading text-muted">Hello <strong>{{ main.username }} </strong></h2>
+    </div>
+</div>
+<!-- Heading -->
+
+<!-- Loading Icon (Bootstrap) -->
+<!--<div class="jumbotron text-center" ng-show="management.loading">
+    <span class="glyphicon glyphicon-repeat spinner"></span>
+    <p>Loading....</p>
+</div>-->
+<!-- Loading Icon (Bootstrap) -->
+
+<!-- Input For Filter  -->
+<!--<div>
+    <div class="col-lg-6">
+        <div class="input-group">
+            <span class="input-group-addon">Results to display:</span>
+            <input type="text" class="form-control" ng-model="number">
+        </div>
+    </div>
+</div>-->
+
+<!-- Container: Start -->
+<!--<div class="container">
+
+    <!-- Apply Button Filter --
+    <button type="button" ng-click="management.showMore(number);" class="btn btn-success">Apply Filter</button>
+
+    <!--/ Show All Button --
+    <button type="button" ng-click="management.showAll();" class="btn btn-warning">Show All</button>
+    <!-- Input For Filter  --
+
+    <!-- Simple Search Bar --
+    <div class="navbar-form">
+        <div class="form-group">
+            <!-- Search Input --
+            <input type="text" class="form-control" name="search" placeholder="search for..." ng-model="searchKeyword">
+        </div>
+        <!-- Serach Button --
+        <button type="button" ng-click="management.search(searchKeyword, number);" class="btn btn-default">Search</button>
+        <!-- Clear Button --
+        <button type="button" ng-click="management.clear();" class="btn btn-default">Clear</button>
+        <!-- Advanced Search Button --
+        <a href="/search">
+            <button type="button" class="btn btn-default">Advanced Search</button>
+        </a>
+    </div>
+    <!-- Simple Search Bar /--
+
+    <!-- Custom Error Message --
+    <div class="row show-hide-message" ng-show="management.showMoreError">
+        <div class="alert alert-danger">{{ management.showMoreError }}</div>
+    </div>
+    <!-- Custom Error Message --
+
+</div>-->
+<!-- Container: End --
+
+<br>
+
+<!-- Total Search Results -->
+<!--<div ng-show="searchFilter !== undefined">
+    <p><strong>Total results: </strong>{{ (management.users | filter: searchFilter).length }}</p>
+</div>-->
+
+<!-- Results Being Shown -->
+<!--<div ng-show="searchFilter !== undefined">
+    <p><strong>Showing: </strong>{{( management.users | filter: searchFilter | limitTo: management.limit).length }}</p>
+</div>-->
+
+<!-- Add Button to add new client -->
+<div class="btn-group">
+    <button id="addClientId" class="btn sbold green">
+        Add New
+        <i class="fa fa-plus"></i>
+    </button>
+</div>
+
+<br>
+<br>
+<!-- User Management Table -->
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Client List</strong>
+    </div>
+
+    <!-- Start: Table -->
+    <table class="table">
+        <tr>
+            <th>
+                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                    <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                    <span></span>
+                </label>
+            </th>
+            <th> ID </th>
+            <th> Full Name </th>
+            <th> Company Name </th>
+            <th> Email Address </th>
+            <th> Created Date </th>
+            <th> Status </th>
+            <th>&nbsp;</th>
+            <!--<th>&nbsp</th>-->
+        </tr>
+        <tr ng-repeat="person in management.users| filter: searchFilter | limitTo: management.limit">
+            <td>
+                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                    <input type="checkbox" class="checkboxes" value="1" />
+                    <span></span>
+                </label>
+            </td>
+            <td>{{ management.users.indexOf(person) + 1}}
+            <td>{{ person.name }}</td>
+            <td>{{ person.companyname}}
+            <td>{{ person.email }}</td>
+            <td>{{ person.createddate}}</td>
+            <td>
+                <div ng-if="person.active==true">Active</div>
+                <div ng-if="person.active==false">Inactive</div>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        Actions
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-left" role="menu">
+                        <li>
+                            <a href="javascript:;"><!--/edit/{{ person._id }}-->
+                                <!--<button type="button" ng-show="management.editAccess" class="btn btn-primary">--><i class="icon-docs"></i>Edit<!--/button>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" ng-if="person.active==true">
+                                <i class="icon-tag"></i>Inactive
+                            </a>  
+                            <a href="javascript:;" ng-if="person.active==false">
+                                <i class="icon-tag"></i>Active
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Edit Button -->
+                <!--<a href="/edit/{{ person._id }}">
+                    <button type="button" ng-show="management.editAccess" class="btn btn-primary">Edit</button>
+                </a>-->
+                <!-- Delete Button -->
+                <!--<button type="button" ng-click="management.deleteUser(person.username);" ng-show="management.deleteAccess" class="btn btn-danger">Delete</button>-->
+            </td>
+        </tr>
+        <!-- End: Table -->
+    </table>
+</div>
+<!-- User Management Table -->
+
+<br>
+<br>
+
+<!-- Input For Filter  -->
+<!--<div>
+    <div class="col-lg-6">
+        <div class="input-group">
+            <span class="input-group-addon">Results to display:</span>
+            <input type="text" class="form-control" ng-model="number">
+        </div>
+    </div>
+</div>
+-->
+<!-- Container: Start --
+<div class="container">
+
+    <!-- Apply Button Filter --
+    <button type="button" ng-click="management.showMore(number);" class="btn btn-success">Apply Filter</button>
+
+    <!--/ Show All Button --
+    <button type="button" ng-click="management.showAll();" class="btn btn-warning">Show All</button>
+    <!-- Input For Filter  --
+
+    <!-- Simple Search Bar --
+    <div class="navbar-form">
+        <div class="form-group">
+            <!-- Search Input --
+            <input type="text" class="form-control" name="search" placeholder="search for..." ng-model="searchKeyword">
+        </div>
+        <!-- Serach Button --
+        <button type="button" ng-click="management.search(searchKeyword, number);" class="btn btn-default">Search</button>
+        <!-- Clear Button --
+        <button type="button" ng-click="management.clear();" class="btn btn-default">Clear</button>
+        <!-- Advanced Search Button --
+        <a href="/search">
+            <button type="button" class="btn btn-default">Advanced Search</button>
+        </a>
+    </div>
+    <!-- Simple Search Bar /--
+</div>
+<!-- Container: End -->
+
+<br>
+
+<!-- Total Search Results -->
+<!--<div ng-show="searchFilter !== undefined">
+    <p><strong>Total results: </strong>{{ (management.users | filter: searchFilter).length }}</p>
+</div>-->
+
+<!-- Results Being Shown -->
+<!--<div ng-show="searchFilter !== undefined">
+    <p><strong>Showing: </strong>{{( management.users | filter: searchFilter | limitTo: management.limit).length }}</p>
+</div>
+
+<br>
+-->
+<!-- Custom Error Message -->
+<!--<div class="row show-hide-message" ng-show="management.showMoreError">
+    <div class="alert alert-danger">{{ management.showMoreError }}</div>
+</div>-->
+<!-- Custom Error Message -->
